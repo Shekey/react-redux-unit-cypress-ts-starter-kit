@@ -23,6 +23,7 @@ module.exports = {
           },
           noErrorOnMissing: true,
         },
+        { from: 'public/manifest', to: 'manifest' }
       ],
     }),
     new HtmlWebpackPlugin({

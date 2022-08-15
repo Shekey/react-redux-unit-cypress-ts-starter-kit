@@ -4,6 +4,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
+
 const paths = require('./paths');
 const common = require('./webpack.common.config');
 
@@ -42,6 +44,10 @@ module.exports = merge(common, {
     }),
     new CopyPlugin({
       patterns: [{ from: `${paths.public}/robots.txt`, to: 'robots.txt' }],
+    }),
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true
     }),
     new WebpackManifestPlugin(),
   ],
