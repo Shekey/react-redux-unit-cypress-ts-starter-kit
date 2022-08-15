@@ -14,7 +14,18 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
-    "lib": ["es5", "es6", "dom", "dom.iterable"]
+    "lib": ["es5", "es6", "dom", "dom.iterable"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@root/*": ["../*"],
+      "@core/*": ["src/components/core/*"],
+      "@common/*": ["src/components/common/*"],
+      "@feature/*": ["src/components/feature/*"],
+      "@global/*": ["src/components/global/*"],
+      "@shared/*": ["src/components/shared/*"],
+      "@skeleton/*": ["src/components/skeleton/*"]
+    },
   },
   "exclude": ["./node_modules/**/*"]
 }
