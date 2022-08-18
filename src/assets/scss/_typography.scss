@@ -1,0 +1,49 @@
+/* Font name: Nunito */
+@font-face {
+  font-family: 'Nunito';
+  src: url("~@/assets/fonts/Nunito/NunitoSans-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url("~@/assets/fonts/Nunito/NunitoSans-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url("~@/assets/fonts/Nunito/NunitoSans-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Font name: Gilroy */
+@font-face {
+  font-family: 'Gilroy';
+  src: url("~@/assets/fonts/Gilroy/Gilroy-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url("~@/assets/fonts/Gilroy/Gilroy-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url("~@/assets/fonts/Gilroy/Gilroy-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}

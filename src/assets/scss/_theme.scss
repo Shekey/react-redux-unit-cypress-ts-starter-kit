@@ -1,0 +1,152 @@
+:root {
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-morganite: #ed99ac;
+  --color-charoite: #5d44b6;
+  --color-charoite-light: rgb(209 201 247 / 0.47);
+  --color-charoite-10: #EFEDF8;
+  --color-charoite-medium: #7D69C5;
+  --color-charoite-dark: #37286c;
+  --color-charoite-30: #CFC7EA;
+  --color-charoite-50: #B4AAD7;
+  --color-amethyst: #bb64f3;
+  --color-indigo: #190b4b;
+  --color-parchment-dark: #e6cbb3;
+  --color-hale: #544e69;
+  --color-obsidian: #090909;
+  --color-augite: #404040;
+  --color-slate: #7b7b7b;
+  --color-basalt: #979797;
+  --color-basalt-light: #f8f8f8;
+  --color-tuff: #dfdfdf;
+  --color-agate: #fb7586;
+  --color-agate-300: #ED6677;
+  --color-agate-200: #f68795;
+  --color-agate-light: #fff1f3;
+  --color-blue: #3589eb;
+  --color-blue-100: #f8faff;
+  --color-blue-200: #f2f5ff;
+  --color-blue-300: #e8effa;
+  --color-blue-600: #b0c3e9;
+  --color-grey: #ededed;
+  --color-grey-dark: #aeaeae;
+  --color-grey-100: #f9f9f9;
+  --color-grey-200: #eeeeee;
+  --color-orchid-300: #6F70A4;
+  --color-orchid-200: #6A6DAA;
+  --color-orchid-100: #E9D8FE;
+  --color-orange-100: #fff6e8;
+  --color-orange-200: #feeed1;
+  --color-orange-300: #FEEACB;
+  --color-orange-400: #fda24e;
+  --color-orange-light: #FEF1DA;
+  --color-magenta-light: #EEEEFF;
+  --color-magenta-100: #F9F9FF;
+  --color-magenta-200: #F0F0FF;
+  --color-magenta-300: #ECEAFF;
+  --color-ghost-white: #F5F4FF;
+  --color-blush: #FFF5F5;
+
+  --box-shadow-default: #00000009;
+  --box-shadow-dropdown: #00000013;
+  --box-shadow-glow-soft: #00000005;
+
+  --color-parchment: #ffe1c6;
+  --color-parchment-rgb: 255, 225, 198;
+  --color-basalt: #979797;
+  --color-basalt-rgb: 151, 151, 151;
+  --color-malachite: #09BE8C;
+  --color-malachite-rgb: 9, 190, 140;
+  --color-sulphur: #ebdd61;
+  --color-sulphur-rgb: 235, 221, 97;
+  --color-cerulean: #0998c1;
+  --color-cerulean-rgb: 9, 152, 193;
+  --color-jaffa: #fdac32;
+  --color-jaffa-rgb: 253, 172, 50;
+  --color-orchid: #7769e4;
+  --color-orchid-rgb: 119, 105, 228;
+  --color-orchid-400:#5E6194;
+  --color-orchid-400-rgb: 94, 97, 148;
+  --color-peach: #e27070;
+  --color-peach-rgb: 226, 112, 112;
+  --color-violet: #A20DFE;
+  --color-violet-rgb: 162, 13, 254;
+  --color-jade: #3ACAA2;
+  --color-jade-rgb: 58, 202, 162;
+  --color-salmon: #FE599A;
+  --color-salmon-rgb: 254, 89, 154;
+  --color-cobalt: #468DFE;
+  --color-cobalt-rgb: 70, 141, 254;
+  --color-saddle: #923C29;
+  --color-saddle-rgb: 146, 60, 41;
+  --color-pine: #078C68;
+  --color-pine-rgb: 7, 140, 104;
+  --color-spruce: #2857A4;
+  --color-spruce-rgb: 40, 87, 164;
+  --color-ash: #8D6E8D;
+  --color-ash-rgb: 141, 110, 141;
+  --color-magenta: #F413D9;
+  --color-honey: #FEEDCF;
+  --color-honey-100: #FFEED2;
+  --color-magenta-rgb: 244, 19, 217;
+  --color-olive: #53A97F;
+  --color-olive-rgb: 83, 169, 127;
+  --color-agate-rgb: 237, 102, 119;
+  --color-blush: #FFF5F5;
+  --color-magenta-pink: #D46AAA;
+  --color-magnolia: #F9F7FF;
+
+  --color-marketing: #b62d7f;
+  --color-marketing-rgb: 182, 45, 127;
+
+  --color-primary: var(--color-charoite);
+  --color-primary-rgb: 93, 68, 182;
+  --color-primary-dark: var(--color-charoite-dark);
+
+  --color-secondary: var(--color-blue-100);
+  --color-secondary-rgb: 242, 245, 255;
+  --color-secondary-soft-rgb: 19, 39, 91;
+  --color-black-rgb: 0, 0, 0;
+  --color-grey-rgb: 255, 255, 255;
+  --color-charoite-rgb: 131, 68, 252;
+  --color-malachite-rgb: 9, 190, 140;
+  --color-blue-rgb: 53, 137, 235;
+
+  --color-link: var(--color-charoite);
+
+  --color-danger: var(--color-agate-300);
+  --color-danger-rgb: 237, 102, 119;
+
+  --color-info: var(--color-charoite);
+  --color-info-rgb: 93, 68, 182;
+
+  --color-success: var(--color-malachite);
+  --color-success-rgb: 125, 215, 123;
+  --color-slate-rgb: 123, 123, 123;
+
+  --color-alert-borderless: #efedf8;
+
+  --container-padding: 20px;
+  --content-width: calc(1440px + (2 * var(--container-padding)));
+  --grid-row-gap: 0;
+  --grid-column-gap: 16px;
+
+  --spacing-responsive: 2px;
+  --spacing-fixed: 4px;
+
+  @include breakpoint-up('md') {
+    --container-padding: 35px;
+    --grid-row-gap: 0;
+    --grid-column-gap: 40px;
+    --spacing-responsive: 3px;
+  }
+
+  @include breakpoint-up('lg') {
+    --spacing-responsive: 4px;
+  }
+
+  @include breakpoint-up('xl') {
+    --grid-row-gap: 0;
+    --grid-column-gap: 30px;
+  }
+}

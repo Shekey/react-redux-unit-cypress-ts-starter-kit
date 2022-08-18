@@ -7,6 +7,7 @@ import { useAppSelector } from '../../hooks/useAppSelector';
 import { selectTodos } from '../todos/todosSlice';
 import { resetEdit } from '../todos/todosSlice';
 import { useIsClickOutside } from '.././../hooks/useClickOutside';
+import { Todo } from '@/types/global';
 
 const Modal = (): JSX.Element => {
   const dispatch = useAppDispatch();

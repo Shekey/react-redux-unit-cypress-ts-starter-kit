@@ -49,7 +49,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               limit: 8192,
-              esModule: false
+              esModule: false,
             },
           },
         ],
@@ -66,6 +66,19 @@ module.exports = {
         options: {
           transpileOnly: true,
         },
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              additionalData: `@import "@/assets/scss/variables";`
+            },
+          },
+        ],
       },
     ],
   },

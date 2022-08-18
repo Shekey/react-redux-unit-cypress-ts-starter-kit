@@ -1,0 +1,254 @@
+$columns-count: 12;
+$sr: var(--spacing-responsive);
+$sf: var(--spacing-fixed);
+$fallback: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+$nunito: 'Nunito', $fallback;
+$gilroy: 'Gilroy', $fallback;
+$breakpoints: (
+  'xs': 325px,
+  'sm': 768px,
+  'md': 1024px,
+  'lg': 1200px,
+  'xl': 1440px,
+);
+
+$apectRatios:
+  "16-9" 16 9,
+  "8-5" 8 5,
+  "3-2" 3 2,
+  "4-3" 4 3,
+  "1-1" 1 1,
+  "5-6" 5 6;
+
+@mixin breakpoint-up($breakpoint) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @if $value {
+    @media (min-width: $value) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn 'Unfortunately, no value could be retrieved from `#{$breakpoint}`.';
+  }
+}
+
+@mixin breakpoint-down($breakpoint) {
+  $value: map-get($breakpoints, $breakpoint);
+
+  @if $value {
+    @media (max-width: ($value - 1)) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn 'Unfortunately, no value could be retrieved from `#{$breakpoint}`.';
+  }
+}
+
+@mixin aspect-ratio($sizeX, $sizeY) {
+  position: relative;
+  width: 100%;
+  padding-bottom: calc(($sizeY / $sizeX) * 100%);
+
+  & > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+%heading-giga {
+  font-size: 5.6rem;
+  line-height: 6.8rem;
+  font-family: $gilroy;
+  font-weight: 700;
+
+  @include breakpoint-up('md') {
+    font-size: 7.6rem;
+    line-height: 9.2rem;
+  }
+
+  @include breakpoint-up('lg') {
+    font-size: 9.4rem;
+    line-height: 11.4rem;
+  }
+}
+
+%heading-mega {
+  font-size: 4.4rem;
+  line-height: 5.3rem;
+  font-family: $gilroy;
+  font-weight: 700;
+
+  @include breakpoint-up('md') {
+    font-size: 5.8rem;
+    line-height: 7rem;
+  }
+
+  @include breakpoint-up('lg') {
+    font-size: 7.2rem;
+    line-height: 8.4rem;
+  }
+}
+
+%h1 {
+  font-family: $gilroy;
+  font-weight: 700;
+  font-size: 3.4rem;
+  line-height: 4.1rem;
+
+  @include breakpoint-up('md') {
+    font-size: 4.6rem;
+    line-height: 5.6rem;
+  }
+
+  @include breakpoint-up('lg') {
+    font-size: 5.8rem;
+    line-height: 6.8rem;
+  }
+}
+
+%h2 {
+  font-size: 2.6rem;
+  line-height: 3.1rem;
+  font-family: $gilroy;
+  font-weight: 700;
+
+  @include breakpoint-up('md') {
+    font-size: 3.4rem;
+    line-height: 4.1rem;
+  }
+
+  @include breakpoint-up('lg') {
+    font-size: 4.2rem;
+    line-height: 5rem;
+  }
+}
+
+%h3 {
+  font-size: 2rem;
+  line-height: 2.4rem;
+  font-family: $gilroy;
+  font-weight: 700;
+
+  @include breakpoint-up('md') {
+    font-size: 2.6rem;
+    line-height: 3.1rem;
+  }
+
+  @include breakpoint-up('lg') {
+    font-size: 3.2rem;
+    line-height: 3.8rem;
+  }
+}
+
+%h4 {
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  font-family: $gilroy;
+  font-weight: 700;
+
+  @include breakpoint-up('md') {
+    font-size: 2rem;
+    line-height: 2.4rem;
+  }
+
+  @include breakpoint-up('lg') {
+    font-size: 2.6rem;
+    line-height: 3rem;
+  }
+}
+
+%h5 {
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  font-family: $gilroy;
+  font-weight: 700;
+
+  @include breakpoint-up('md') {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+  }
+
+  @include breakpoint-up('lg') {
+    font-size: 2.2rem;
+    line-height: 2.6rem;
+  }
+}
+
+%h6 {
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  font-family: $gilroy;
+  font-weight: 700;
+
+  @include breakpoint-up('lg') {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+  }
+}
+
+%paragraph-large {
+  font-size: 16px;
+  line-height: 21.80px;
+  font-weight: 400;
+}
+
+%paragraph-small {
+  font-size: 14px;
+  line-height: 19px;
+  font-weight: 400;
+}
+
+%app-scrollbar {
+  scrollbar-color: var(--color-grey) transparent;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+
+    @include breakpoint-up('md') {
+      width: 10px;
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: var(--color-grey);
+  }
+}
+
+%app-scrollbar-small {
+  scrollbar-color: var(--color-grey) transparent;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+
+    @include breakpoint-up('md') {
+      width: 7px;
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: var(--color-grey);
+  }
+}
+
+%outline {
+  box-shadow: 0 0 0 3px var(--color-blue-300);
+}

@@ -1,3 +1,4 @@
+import { Todo } from '@/types/global';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../config/store';
 

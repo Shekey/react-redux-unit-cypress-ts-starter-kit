@@ -1,6 +1,6 @@
 {
-  "short_name": "React redux PWA",
-  "name": "React redux Unit tests pwa",
+  "short_name": "Indevitus",
+  "name": "Indevitus React PWA",
   "icons": [
     {
       "src": "../assets/favicon-16x16.png",

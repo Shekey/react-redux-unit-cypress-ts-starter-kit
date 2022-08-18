@@ -8,6 +8,7 @@ import { editTodo, deleteTodo } from './todosSlice';
 import { useAppDispatch } from '../../hooks/useAppDispatch';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { AiOutlineDelete } from '@react-icons/all-files/ai/AiOutlineDelete';
+import { Todo } from '@/types/global';
 
 const Todos = (): JSX.Element => {
   const dispatch = useAppDispatch();

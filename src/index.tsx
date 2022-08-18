@@ -5,8 +5,6 @@ import { Provider } from 'react-redux';
 import { store } from './config/store';
 import './index.styles.css';
 
-import * as serviceWorker from './serviceWorker';
-
 const root = createRoot(document.getElementById('root'));
 
 root.render(
