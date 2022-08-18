@@ -47,14 +47,14 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.{ts,tsx}'],
+      files: ['*.{ts,tsx}', '/src/__tests__/e2e/**/*.{ts,js}'],
       parser: '@typescript-eslint/parser',
       parserOptions: {
         ecmaVersion: 2020,
         project: './tsconfig.json',
       },
       plugins: ['@typescript-eslint', 'import'],
-      extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+      extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:cypress/recommended'],
       rules: {
         'no-console': 0,
         '@typescript-eslint/no-explicit-any': 0,

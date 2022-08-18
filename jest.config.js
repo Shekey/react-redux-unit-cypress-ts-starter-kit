@@ -6,7 +6,7 @@ module.exports = {
     '@/(.*)': '<rootDir>/src/$1',
   },
   collectCoverageFrom: ['<rootDir>/**/*.{ts, tsx}'],
-  testRegex: '(/src//tests/.*|(\\.|/)(test|spec))\\.(ts|tsx)$',
+  testRegex: '(/src//tests//unit/.*|(\\.|/)(test|spec))\\.(ts|tsx)$',
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest'
   },

@@ -3,6 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const paths = require('./paths');
+const path = require('path');
 
 module.exports = {
   entry: [`${paths.src}/index.tsx`],
@@ -27,7 +28,7 @@ module.exports = {
       ],
     }),
     new HtmlWebpackPlugin({
-      title: 'Todos',
+      title: 'Indevitus',
       template: `${paths.public}/index.html`,
       filename: 'index.html',
     }),
@@ -40,6 +41,19 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.(png|jpg|gif)$/i,
+        dependency: { not: ['url'] },
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              limit: 8192,
+              esModule: false
+            },
+          },
+        ],
+      },
       {
         test: /\.(js|jsx)$/,
         use: ['babel-loader'],
@@ -56,6 +70,15 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.jsx', '.mjs'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.mjs', '.png', '.jpg', '.jpeg', '.svg'],
+    alias: {
+      '@': path.resolve(__dirname, '../src'),
+      '@root': path.resolve(__dirname, '../'),
+      '@core': path.resolve(__dirname, '../src/components/core'),
+      '@common': path.resolve(__dirname, '../src/components/common'),
+      '@feature': path.resolve(__dirname, '../src/components/feature'),
+      '@global': path.resolve(__dirname, '../src/components/global'),
+      '@shared': path.resolve(__dirname, '../src/components/shared')
+    }
   },
 };

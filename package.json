@@ -13,11 +13,19 @@
     "node": "16.15.1"
   },
   "keywords": [],
+  "main": "public/electron.js",
+  "homepage": "./",
   "scripts": {
     "start": "node dist/server.bundle.js",
     "build": "run-s clean:dist build:client:prod build:server:prod",
     "dev": "run-p build:server:dev start:server:dev start:client:dev",
-    "test": "jest --config=jest.config.js",
+    "test:unit": "jest --config=jest.config.js",
+    "cypress": "cypress open",
+    "test": "start-server-and-test dev http://localhost:8080 cypress",
+    "electron:start": "concurrently -k \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electronmon .\"",
+    "electron:package:mac": "yarn build && electron-builder -m",
+    "electron:package:win": "yarn build && electron-builder -w",
+    "electron:package:linux": "yarn build && electron-builder -l",
     "clean:dist": "rm -rf dist && mkdir dist",
     "start:client:dev": "cross-env NODE_ENV=development webpack serve --config webpack/webpack.dev.config.js --mode=development",
     "start:server:dev": "cross-env NODE_ENV=development webpack --watch --progress --config webpack/webpack.server.config.js --mode=development",
@@ -43,6 +51,9 @@
     "@reduxjs/toolkit": "^1.8.2",
     "compression": "^1.7.4",
     "dateformat": "^5.0.3",
+    "electron-updater": "^5.0.5",
+    "electron-updater-debug": "^3.1.2",
+    "eslint-plugin-cypress": "^2.12.1",
     "express": "^4.17.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -57,6 +68,7 @@
     "@babel/preset-env": "^7.12.17",
     "@babel/preset-react": "^7.12.13",
     "@babel/preset-typescript": "^7.16.7",
+    "@testing-library/cypress": "^8.0.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -75,11 +87,20 @@
     "@typescript-eslint/parser": "^5.25.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "concurrently": "^7.3.0",
     "copy-webpack-plugin": "^7.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^5.0.2",
     "css-minimizer-webpack-plugin": "^3.4.1",
     "cssnano": "^5.1.12",
+    "cypress": "^10.5.0",
+    "dotenv": "^16.0.1",
+    "electron": "^20.0.2",
+    "electron-builder": "^23.3.3",
+    "electron-updater": "^5.0.5",
+    "electron-updater-debug": "^3.1.2",
+    "electronmon": "^2.0.2",
+    "env-cmd": "^10.1.0",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard-with-typescript": "^22.0.0",
@@ -89,6 +110,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.30.0",
+    "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^7.2.8",
     "html-webpack-plugin": "^5.2.0",
     "husky": "^5.0.9",
@@ -110,6 +132,8 @@
     "ts-jest": "^28.0.7",
     "ts-loader": "^9.2.6",
     "typescript": "^4.6.4",
+    "url-loader": "^4.1.1",
+    "wait-on": "^6.0.1",
     "webpack": "^5.23.0",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^4.8.1",
@@ -117,5 +141,43 @@
     "webpack-merge": "^5.7.3",
     "webpack-node-externals": "^3.0.0",
     "workbox-webpack-plugin": "^6.5.4"
+  },
+  "build": {
+    "generateUpdatesFilesForAllChannels": true,
+    "appId": "com.indevitus.electron.app",
+    "extends": null,
+    "productName": "Indevitus Electron App",
+    "copyright": "Indevitus d.o.o",
+    "buildVersion": "1",
+    "extraMetadata": {
+      "main": "./dist/assets/electron.js"
+    },
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "public"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "./src/assets/image.png"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "./src/assets/image.png"
+    },
+    "linux": {
+      "target": "deb",
+      "icon": "./src/assets/image.png"
+    }
+  },
+  "browserslist": {
+    "production": [
+      "last 1 electron version"
+    ],
+    "development": [
+      "last 1 electron version"
+    ]
   }
 }
