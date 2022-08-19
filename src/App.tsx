@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Loader } from './features/loader/Loader';
+import '@/assets/scss/bootstrap.scss'
+
 const Modal = React.lazy(() => import('./features/modal/Modal'));
 const Todos = React.lazy(() => import('./features/todos/Todos'));
 const Navbar = React.lazy(() => import('./features/navbar/Navbar'));

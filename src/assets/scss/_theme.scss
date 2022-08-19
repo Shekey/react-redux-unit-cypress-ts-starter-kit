@@ -141,6 +141,7 @@
     --spacing-responsive: 3px;
   }
 
+  
   @include breakpoint-up('lg') {
     --spacing-responsive: 4px;
   }
