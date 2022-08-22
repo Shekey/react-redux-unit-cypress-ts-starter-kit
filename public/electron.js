@@ -3,7 +3,7 @@ const path = require('path');
 const url = require('url');
 const { autoUpdater } = require("electron-updater");
 const fs = require('fs');
-const data = fs.readFileSync(__dirname + '/../../package.json', 'utf8');
+const data = fs.readFileSync(__dirname + '/../package.json', 'utf8');
 const dataObj = JSON.parse(data);
 
 let updateInterval = null;
@@ -15,7 +15,7 @@ let win;
 
 function createWindow() {
   const startUrl = process.env.ELECTRON_START_URL || url.format({
-    pathname: path.join(__dirname, '/../index.html'),
+    pathname: path.join(__dirname, '../index.html'),
     protocol: 'file:',
     slashes: true,
   });
@@ -24,14 +24,15 @@ function createWindow() {
     height: 800,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false
+      contextIsolation: false,
+      enableRemoteModule: true,
     }
   });
 
   if (process.env.REACT_APP_ENV_UPDATE_CHANNEL_STRING === 'dev') {
     win.loadURL(startUrl);
   } else {
-    win.loadURL('file:///' + __dirname + "/../index.html");
+    win.loadURL('file:///' + __dirname + "/index.html");
   }
 
   app.on('window-all-closed', () => {

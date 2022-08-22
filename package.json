@@ -16,17 +16,19 @@
   "main": "public/electron.js",
   "homepage": "./",
   "scripts": {
-    "start": "node dist/server.bundle.js",
+    "start": "node build/server.bundle.js",
     "build": "run-s clean:dist build:client:prod build:server:prod",
     "dev": "run-p build:server:dev start:server:dev start:client:dev",
     "test:unit": "jest --config=jest.config.js",
     "cypress": "cypress open",
     "test": "start-server-and-test dev http://localhost:8080 cypress",
     "electron:start": "concurrently -k \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electronmon .\"",
+    "package": "electron-builder build --win -c.extraMetadata.main=build/js/electron.js --publish never",
+    "publish": "electron-builder build --win --publish always",
     "electron:package:mac": "yarn build && electron-builder -m",
     "electron:package:win": "yarn build && electron-builder -w",
     "electron:package:linux": "yarn build && electron-builder -l",
-    "clean:dist": "rm -rf dist && mkdir dist",
+    "clean:dist": "rm -rf build && mkdir build",
     "start:client:dev": "cross-env NODE_ENV=development webpack serve --config webpack/webpack.dev.config.js --mode=development",
     "start:server:dev": "cross-env NODE_ENV=development webpack --watch --progress --config webpack/webpack.server.config.js --mode=development",
     "build:server:dev": "cross-env NODE_ENV=development webpack --config webpack/webpack.server.config.js --mode=development",
@@ -147,32 +149,30 @@
   },
   "build": {
     "generateUpdatesFilesForAllChannels": true,
-    "appId": "com.indevitus.electron.app",
-    "extends": null,
-    "productName": "Indevitus Electron App",
-    "copyright": "Indevitus d.o.o",
-    "buildVersion": "1",
-    "extraMetadata": {
-      "main": "./dist/assets/electron.js"
-    },
-    "files": [
-      "dist/**/*",
-      "node_modules/**/*"
-    ],
-    "directories": {
-      "buildResources": "public"
-    },
+    "appId": "Shekey.electronapp",
+    "productName": "React Electron App",
+    "copyright": "Shekey",
     "mac": {
-      "target": "dmg",
-      "icon": "./src/assets/image.png"
+      "publish": {
+        "provider": "github",
+        "owner": "Shekey",
+        "repo": "ART-React-Electron-App"
+      }
     },
     "win": {
-      "target": "nsis",
-      "icon": "./src/assets/image.png"
+      "publish": {
+        "provider": "github",
+        "owner": "Shekey",
+        "repo": "ART-React-Electron-App"
+      }
     },
-    "linux": {
-      "target": "deb",
-      "icon": "./src/assets/image.png"
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "publish": {
+      "provider": "github",
+      "owner": "Shekey"
     }
   },
   "browserslist": {

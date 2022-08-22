@@ -7,7 +7,7 @@ const { PORT, NODE_ENV } = process.env;
 const app: express.Application = express();
 const port: string | number = PORT || 3000;
 const isDevelopment: boolean = NODE_ENV === 'development';
-const staticDir: string = isDevelopment ? './dist' : '.';
+const staticDir: string = isDevelopment ? './build' : '.';
 
 app.use(compression());
 app.use(express.static(path.join(__dirname, staticDir)));

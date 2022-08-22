@@ -83,7 +83,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.jsx', '.mjs', '.png', '.jpg', '.jpeg', '.svg'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.mjs'],
     alias: {
       '@': path.resolve(__dirname, '../src'),
       '@root': path.resolve(__dirname, '../'),

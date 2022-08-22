@@ -1,0 +1,67 @@
+name: Electron release
+'on':
+  push:
+    branches:
+      - develop
+      - integration
+      - master
+
+jobs:
+  electron_app_dev:
+    runs-on: macos-12
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 15.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 15.x
+      - name: 'dev npm install, build'
+        if: github.ref == 'refs/heads/develop'
+        run: |
+          cd public
+          touch .env
+          echo REACT_APP_ENV_UPDATE_CHANNEL_SUFFIX="-alpha" >> .env
+          echo REACT_APP_ENV_UPDATE_CHANNEL_STRING="alpha" >> .env
+          cat .env
+          cd ..
+          npm install
+          npm install -g npm
+          echo ${{github.ref}}
+          npm run build:dev
+          npm run publish
+        env:
+          REACT_APP_ENV_UPDATE_CHANNEL_SUFFIX: -alpha
+          REACT_APP_ENV_UPDATE_CHANNEL_STRING: 'alpha'
+      - name: 'integration npm install, build'
+        if: github.ref == 'refs/heads/integration'
+        run: |
+          touch .env
+          echo REACT_APP_ENV_UPDATE_CHANNEL_SUFFIX="-beta" >> .env
+          echo REACT_APP_ENV_UPDATE_CHANNEL_STRING="beta" >> .env
+          cat .env
+          npm install
+          npm install -g npm
+          echo ${{github.ref}}
+          npm run build:qa
+          npm run publish
+        env:
+          REACT_APP_ENV_UPDATE_CHANNEL_SUFFIX: -beta
+          REACT_APP_ENV_UPDATE_CHANNEL_STRING: 'beta'
+      - name: 'prod npm install, build'
+        if: github.ref == 'refs/heads/master'
+        run: |
+          touch .env
+          echo REACT_APP_ENV_UPDATE_CHANNEL_SUFFIX="" >> .env
+          echo REACT_APP_ENV_UPDATE_CHANNEL_STRING="latest" >> .env
+          cat .env
+          npm install
+          npm install -g npm
+          echo ${{github.ref}}
+          npm run build:prod
+          npm run publish
+        env:
+          REACT_APP_ENV_UPDATE_CHANNEL_SUFFIX: ''
+          REACT_APP_ENV_UPDATE_CHANNEL_STRING: 'latest'
+    env:
+      GH_TOKEN: '${{ secrets.GH_TOKEN }}'
+      CI: false

@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "outDir": "./dist",
+    "outDir": "./build",
     "target": "es6",
     "module": "commonjs",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "removeComments": true,
     "sourceMap": true,
     "allowJs": true,
